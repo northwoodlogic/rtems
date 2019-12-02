@@ -74,6 +74,8 @@ static void usart_initialize(int minor)
   usart_delay(150);
   BCM2835_REG(BCM2835_GPIO_GPPUDCLK0) = 0;
 
+/* Console setup & baud rate is already initialized via U-Boot */
+#if 0
   /*
   ** Init the PL011 UART
   */
@@ -88,7 +90,7 @@ static void usart_initialize(int minor)
   BCM2835_REG(BCM2835_UART0_CR)   = 0x301;
 
   BCM2835_REG(BCM2835_UART0_IMSC) = BCM2835_UART0_IMSC_RX;
-
+#endif
   usart_set_baud(minor, 115000);
 }
 
